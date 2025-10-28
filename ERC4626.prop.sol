@@ -343,7 +343,7 @@ abstract contract ERC4626Prop is Test {
     }
 
     // redeem loss socialization
-    // "One user's redemption MUST NOT affect another user's share value (convertToAssets)"
+    // "One user's redemption MUST NOT decrease another user's share value (convertToAssets)"
     function prop_redeem_loss_socialization(address caller, uint shares, address other) public {
         uint oldOtherConvertToAssets = vault_convertToAssets(IERC4626(_vault_).balanceOf(other));
         vm.prank(caller); vault_redeem(shares, caller, caller);
